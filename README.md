@@ -1,3 +1,7 @@
+<p align="center">
+<img src="./src/assets/logo.png"  />
+</p>
+
 # wechat-need-web
 
 This is a Chrome / Edge extension, can allow the use of WeChat via webpage access
