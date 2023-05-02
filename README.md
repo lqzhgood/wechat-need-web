@@ -15,7 +15,7 @@ https://github.com/lqzhgood/wechat-need-web/wiki
 
 ### Icon mean's
 
-It takes the common first letter "w" of web and WeChat and is assembled through components. Hoping for a more open and interconnected internet.
+It takes the common first letter __"w"__ of `web` and `WeChat` and is assembled through components. Hoping for a more _open_ and _interconnected_ internet.
 
 ## Thanks
 
