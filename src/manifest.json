@@ -1,0 +1,15 @@
+{
+    "manifest_version": 3,
+    "name": "wechat-need-web",
+    "author": "lqzh",
+    "homepage_url": "https://github.com/lqzhgood/wechat-need-web",
+    "version": "__VERSION__",
+    "description": "Allow the use of WeChat via webpage access",
+    "permissions": ["declarativeNetRequest"],
+    "declarative_net_request": {
+        "rule_resources": []
+    },
+    "icons": {},
+    "host_permissions": [],
+    "minimum_chrome_version": "101"
+}
