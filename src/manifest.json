@@ -2,7 +2,6 @@
     "manifest_version": 3,
     "name": "wechat-need-web",
     "author": "lqzh",
-    "default_locale": "zh_CN",
     "homepage_url": "https://github.com/lqzhgood/wechat-need-web",
     "version": "__VERSION__",
     "description": "Allow the use of WeChat via webpage access",
