@@ -4,7 +4,9 @@
 
 # wechat-need-web
 
-This is a Chrome / Edge extension, can allow the use of WeChat via webpage access
+This is a Chrome / Edge extension, can allow the use of WeChat via webpage access.
+
+Comply with `Manifest version 3` specifications.
 
 ## Wiki
 
