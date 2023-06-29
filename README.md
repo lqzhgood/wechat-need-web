@@ -14,7 +14,7 @@ https://github.com/lqzhgood/wechat-need-web/wiki
 
 ## Use
 
--   download `dist`
+-   download the latest version in [Releases](https://github.com/lqzhgood/wechat-need-web/releases)
 -   load the extension in Chrome / Edge.
 
 ## Info
