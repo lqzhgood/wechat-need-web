@@ -26,7 +26,10 @@ export const WECHAT_HEADERS: Readonly<{
 
 export const WECHAT_URLS: Readonly<string[]> = [
     "https://wx.qq.com/*",
+    "https://web.weixin.qq.com/*",
     "https://web.wechat.com/*",
+    "https://web1.wechat.com/*",
+    "https://web2.wechat.com/*",
     "https://wx2.qq.com/*",
     "https://wx8.qq.com/*",
 ];
