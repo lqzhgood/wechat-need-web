@@ -19,7 +19,9 @@ https://github.com/lqzhgood/wechat-need-web/wiki
 
 #### firefox
 Due to a bug in Firefox's implementation of Manifest version 3, it's currently unusable. Please wait for a Firefox update.
-Known non-functional version: 118.0.2.
+
+Known non-functional version: 118.0.2.(2023/10/18)
+
 See details: [#2](https://github.com/lqzhgood/wechat-need-web/issues/5)
 
 ## Info
