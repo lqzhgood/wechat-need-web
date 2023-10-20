@@ -10,6 +10,5 @@
         "rule_resources": []
     },
     "icons": {},
-    "host_permissions": [],
-    "minimum_chrome_version": "101"
+    "host_permissions": []
 }

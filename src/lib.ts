@@ -49,6 +49,23 @@ export class Make {
             ];
         }
 
+        switch (this.platform) {
+            case PLATFORM.chrome:
+                m.minimum_chrome_version = '86';
+                break;
+            case PLATFORM.firefox:
+                m.browser_specific_settings = {
+                    gecko: {
+                        id: 'lqzh@wechat-need-web',
+                        strict_min_version: '113.0',
+                    },
+                };
+                break;
+
+            default:
+                break;
+        }
+
         w(path.join(this.outDir, 'manifest.json'), m);
     }
 

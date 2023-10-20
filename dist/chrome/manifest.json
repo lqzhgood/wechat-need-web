@@ -3,7 +3,7 @@
     "name": "wechat-need-web",
     "author": "lqzh",
     "homepage_url": "https://github.com/lqzhgood/wechat-need-web",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "description": "Allow the use of WeChat via webpage access",
     "permissions": [
         "declarativeNetRequest"
@@ -32,5 +32,5 @@
         "https://wx2.qq.com/*",
         "https://wx8.qq.com/*"
     ],
-    "minimum_chrome_version": "101"
+    "minimum_chrome_version": "86"
 }
