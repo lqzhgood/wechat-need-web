@@ -36,7 +36,7 @@ This repository has been refactored based on https://github.com/adamyi/wechrome 
 Thank you for _adamyi_'s ideas and implementation.
 
 
-## donate / 捐赠
+## Donate / 捐赠
 
 点击链接 http://lqzhgood.github.io/Shmily/guide/other/donation.html 看世界上最可爱的动物
 
