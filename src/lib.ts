@@ -51,12 +51,12 @@ export class Make {
 
         switch (this.platform) {
             case PLATFORM.chrome:
-                m.minimum_chrome_version = '86';
+                m.minimum_chrome_version = '88';
                 break;
             case PLATFORM.firefox:
                 m.browser_specific_settings = {
                     gecko: {
-                        id: 'lqzh@wechat-need-web',
+                        id: 'wechat-need-web@lqzh',
                         strict_min_version: '113.0',
                     },
                 };
