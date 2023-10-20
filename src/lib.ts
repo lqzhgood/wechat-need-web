@@ -1,42 +1,42 @@
-import fs from "node:fs";
-import path from "node:path";
-import sharp from "sharp";
+import fs from 'node:fs';
+import path from 'node:path';
+import sharp from 'sharp';
 
-import { deleteFolderRecursive, w } from "./utils";
+import { deleteFolderRecursive, w } from './utils';
 
-import {
-    FILE_RULE,
-    OUT_DIR,
-    ResourceType,
-    WECHAT_HEADERS,
-    WECHAT_URLS,
-} from "./const";
-import { readSrcJson } from "./utils";
+import { PLATFORM, FILE_RULE, OUT_DIR, ResourceType, WECHAT_HEADERS, WECHAT_URLS } from './const';
+import { readSrcJson } from './utils';
 
 export class Make {
-    manifest: chrome.runtime.ManifestV3 = readSrcJson("./manifest.json");
+    platform: PLATFORM = PLATFORM.chrome;
+    manifest: chrome.runtime.ManifestV3 = readSrcJson('./manifest.json');
 
-    constructor() {
-        if (fs.existsSync(OUT_DIR)) {
-            deleteFolderRecursive(OUT_DIR);
+    outDir: string = '';
+
+    constructor(platform: PLATFORM = PLATFORM.chrome) {
+        this.platform = platform;
+        this.outDir = OUT_DIR(this.platform);
+
+        if (fs.existsSync(this.outDir)) {
+            deleteFolderRecursive(this.outDir);
         }
-        fs.mkdirSync(OUT_DIR);
+        fs.mkdirSync(this.outDir);
     }
 
     async makeManifest() {
-        const pkg = readSrcJson("../package.json");
+        const pkg = readSrcJson('../package.json');
         const m = this.manifest;
         m.version = pkg.version;
         m.host_permissions = WECHAT_URLS as string[];
         m.declarative_net_request.rule_resources.push({
-            id: "wx",
+            id: 'wx',
             enabled: true,
             path: FILE_RULE,
         });
 
         m.icons = await this.makeIcons();
 
-        w("manifest.json", m);
+        w(path.join(this.outDir, 'manifest.json'), m);
     }
 
     makeRules() {
@@ -45,11 +45,11 @@ export class Make {
         rules.push({
             id: -1,
             action: {
-                type: "redirect" as chrome.declarativeNetRequest.RuleActionType.REDIRECT,
+                type: 'redirect' as chrome.declarativeNetRequest.RuleActionType.REDIRECT,
                 redirect: {
                     transform: {
                         queryTransform: {
-                            addOrReplaceParams: [{ key: "target", value: "t" }],
+                            addOrReplaceParams: [{ key: 'target', value: 't' }],
                         },
                     },
                 },
@@ -64,15 +64,12 @@ export class Make {
         rules.push({
             id: -1,
             action: {
-                type: "modifyHeaders" as chrome.declarativeNetRequest.RuleActionType.MODIFY_HEADERS,
-                requestHeaders: Object.entries(WECHAT_HEADERS).map(
-                    ([k, v]) => ({
-                        operation:
-                            "set" as chrome.declarativeNetRequest.HeaderOperation.SET,
-                        header: k,
-                        value: v,
-                    })
-                ),
+                type: 'modifyHeaders' as chrome.declarativeNetRequest.RuleActionType.MODIFY_HEADERS,
+                requestHeaders: Object.entries(WECHAT_HEADERS).map(([k, v]) => ({
+                    operation: 'set' as chrome.declarativeNetRequest.HeaderOperation.SET,
+                    header: k,
+                    value: v,
+                })),
             },
             condition: {},
         });
@@ -86,13 +83,13 @@ export class Make {
             // );
         });
 
-        w(FILE_RULE, rules);
+        w(path.join(this.outDir, FILE_RULE), rules);
     }
 
     async makeIcons() {
-        const icon_dir = "icons";
-        if (!fs.existsSync(path.join(OUT_DIR, icon_dir))) {
-            fs.mkdirSync(path.join(OUT_DIR, icon_dir));
+        const icon_dir = 'icons';
+        if (!fs.existsSync(path.join(this.outDir, icon_dir))) {
+            fs.mkdirSync(path.join(this.outDir, icon_dir));
         }
 
         const icons: { [key: number]: string } = {};
@@ -100,9 +97,7 @@ export class Make {
         for (let i = 0; i < sizes.length; i++) {
             const s = sizes[i];
             const f = `./${icon_dir}/icon_${s}.png`;
-            await sharp(path.join(__dirname, "./assets/logo.png"))
-                .resize(s)
-                .toFile(path.join(OUT_DIR, f));
+            await sharp(path.join(__dirname, './assets/logo.png')).resize(s).toFile(path.join(this.outDir, f));
 
             icons[s] = f;
         }

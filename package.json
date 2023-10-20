@@ -4,7 +4,9 @@
     "description": "Allow WeChat to access the webpage.",
     "main": "index.js",
     "scripts": {
-        "build": "ts-node ./src/index.ts"
+        "build": "npm run build:chrome && npm run build:firefox",
+        "build:chrome": "ts-node ./src/index.ts chrome",
+        "build:firefox": "ts-node ./src/index.ts firefox"
     },
     "keywords": [],
     "author": "",
