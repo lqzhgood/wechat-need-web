@@ -15,12 +15,11 @@ https://github.com/lqzhgood/wechat-need-web/wiki
 ## Use
 
 -   download the latest version in [Releases](https://github.com/lqzhgood/wechat-need-web/releases)
--   load the extension in Chrome / Edge.
+-   Select Browser
+    -   chrome(edge)
+    -   firefox
 
 #### firefox
-Due to a bug in Firefox's implementation of Manifest version 3, it's currently unusable. Please wait for a Firefox update.
-
-Known non-functional version: 118.0.2.(2023/10/18)
 
 See details: [#2](https://github.com/lqzhgood/wechat-need-web/issues/5)
 
@@ -28,7 +27,7 @@ See details: [#2](https://github.com/lqzhgood/wechat-need-web/issues/5)
 
 ### Icon mean's
 
-It takes the common first letter __"w"__ of `web` and `WeChat` and is assembled through components. Hoping for a more _open_ and _interconnected_ internet.
+It takes the common first letter **"w"** of `web` and `WeChat` and is assembled through components. Hoping for a more _open_ and _interconnected_ internet.
 
 ## Thanks
 
