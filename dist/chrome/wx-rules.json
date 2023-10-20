@@ -1,42 +1,7 @@
 [
     {
         "id": 1,
-        "action": {
-            "type": "redirect",
-            "redirect": {
-                "transform": {
-                    "queryTransform": {
-                        "addOrReplaceParams": [
-                            {
-                                "key": "target",
-                                "value": "t"
-                            }
-                        ]
-                    }
-                }
-            }
-        },
-        "condition": {
-            "resourceTypes": [
-                "main_frame",
-                "sub_frame",
-                "stylesheet",
-                "script",
-                "image",
-                "font",
-                "object",
-                "xmlhttprequest",
-                "ping",
-                "csp_report",
-                "media",
-                "websocket",
-                "other"
-            ]
-        },
-        "priority": 1
-    },
-    {
-        "id": 2,
+        "priority": 2,
         "action": {
             "type": "modifyHeaders",
             "requestHeaders": [
@@ -53,6 +18,7 @@
             ]
         },
         "condition": {
+            "urlFilter": "*",
             "resourceTypes": [
                 "main_frame",
                 "sub_frame",
@@ -68,7 +34,31 @@
                 "websocket",
                 "other"
             ]
+        }
+    },
+    {
+        "id": 2,
+        "priority": 1,
+        "action": {
+            "type": "redirect",
+            "redirect": {
+                "transform": {
+                    "queryTransform": {
+                        "addOrReplaceParams": [
+                            {
+                                "key": "target",
+                                "value": "t"
+                            }
+                        ]
+                    }
+                }
+            }
         },
-        "priority": 1
+        "condition": {
+            "urlFilter": "*",
+            "resourceTypes": [
+                "main_frame"
+            ]
+        }
     }
 ]

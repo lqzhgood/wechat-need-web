@@ -10,5 +10,6 @@ import { Make } from './lib';
     }
     const m = new Make(platform as PLATFORM);
     await m.makeManifest();
+    m.copyStatic();
     m.makeRules();
 })();
