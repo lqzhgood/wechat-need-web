@@ -18,6 +18,7 @@ https://github.com/lqzhgood/wechat-need-web/wiki
 -   Select Browser
     -   chrome(edge)
     -   firefox
+        -  Permissions need to be assigned manually. see [#15](https://github.com/lqzhgood/wechat-need-web/issues/15)
 
 #### firefox
 
