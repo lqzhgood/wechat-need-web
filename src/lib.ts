@@ -4,7 +4,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import sharp from 'sharp';
 
-import { deleteFolderRecursive, w } from './utils';
+import { w } from './utils';
 
 import { PLATFORM, FILE_RULE, OUT_DIR, ResourceType, WECHAT_HEADERS, WECHAT_URLS } from './const';
 import { readSrcJson } from './utils';
@@ -20,7 +20,7 @@ export class Make {
         this.outDir = OUT_DIR(this.platform);
 
         if (fs.existsSync(this.outDir)) {
-            deleteFolderRecursive(this.outDir);
+            fs.rmSync(this.outDir, { recursive: true, force: true });
         }
         fs.mkdirSync(this.outDir);
     }

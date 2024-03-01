@@ -9,20 +9,3 @@ export function w(f: string, data: object) {
 export function readSrcJson(f: string) {
     return JSON.parse(fs.readFileSync(path.join(__dirname, f), 'utf-8'));
 }
-
-export function deleteFolderRecursive(p: string) {
-    if (fs.existsSync(p)) {
-        fs.readdirSync(p).forEach(function (file) {
-            const curPath = p + '/' + file;
-            if (fs.lstatSync(curPath).isDirectory()) {
-                // 递归删除子目录
-                deleteFolderRecursive(curPath);
-            } else {
-                // 删除文件
-                fs.unlinkSync(curPath);
-            }
-        });
-        // 删除空目录
-        fs.rmdirSync(p);
-    }
-}
