@@ -1,4 +1,4 @@
-import { isSupportedPlatform } from 'utils';
+import { isSupportedPlatform } from './utils';
 import { PLATFORM } from './const';
 import { Make } from './lib';
 
