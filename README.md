@@ -2,6 +2,9 @@
 <img src="./src/assets/logo.png"  />
 </p>
 
+> [!CAUTION]
+> This extension will cause your account to be warned by Tencent. https://github.com/lqzhgood/wechat-need-web/issues/43
+
 # wechat-need-web
 
 This is a Chrome / Edge extension, can allow the use of WeChat via webpage access.
