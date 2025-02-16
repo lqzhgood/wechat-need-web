@@ -1,12 +1,17 @@
-/*global chrome*/
-
 import fs from 'node:fs';
 import path from 'node:path';
 import sharp from 'sharp';
 
 import { w } from './utils';
 
-import { PLATFORM, FILE_RULE, OUT_DIR, ResourceType, WECHAT_HEADERS, WECHAT_URLS } from './const';
+import {
+    PLATFORM,
+    FILE_RULE,
+    OUT_DIR,
+    ResourceType,
+    WECHAT_HEADERS,
+    WECHAT_URLS,
+} from './const';
 import { readSrcJson } from './utils';
 
 export class Make {
@@ -76,12 +81,16 @@ export class Make {
             id: -1,
             priority: 2,
             action: {
-                type: 'modifyHeaders' as chrome.declarativeNetRequest.RuleActionType.MODIFY_HEADERS,
-                requestHeaders: Object.entries(WECHAT_HEADERS).map(([k, v]) => ({
-                    operation: 'set' as chrome.declarativeNetRequest.HeaderOperation.SET,
-                    header: k,
-                    value: v,
-                })),
+                type: chrome.declarativeNetRequest.RuleActionType
+                    .MODIFY_HEADERS,
+                requestHeaders: Object.entries(WECHAT_HEADERS).map(
+                    ([k, v]) => ({
+                        operation:
+                            chrome.declarativeNetRequest.HeaderOperation.SET,
+                        header: k,
+                        value: v,
+                    })
+                ),
             },
             condition: {
                 urlFilter: '*',
@@ -97,11 +106,13 @@ export class Make {
                 id: -1,
                 priority: 1,
                 action: {
-                    type: 'redirect' as chrome.declarativeNetRequest.RuleActionType.REDIRECT,
+                    type: chrome.declarativeNetRequest.RuleActionType.REDIRECT,
                     redirect: {
                         transform: {
                             queryTransform: {
-                                addOrReplaceParams: [{ key: 'target', value: 't' }],
+                                addOrReplaceParams: [
+                                    { key: 'target', value: 't' },
+                                ],
                             },
                         },
                     },
@@ -134,7 +145,9 @@ export class Make {
         for (let i = 0; i < sizes.length; i++) {
             const s = sizes[i];
             const f = `./${icon_dir}/icon_${s}.png`;
-            await sharp(path.join(__dirname, './assets/logo.png')).resize(s).toFile(path.join(this.outDir, f));
+            await sharp(path.join(__dirname, './assets/logo.png'))
+                .resize(s)
+                .toFile(path.join(this.outDir, f));
 
             icons[s] = f;
         }
